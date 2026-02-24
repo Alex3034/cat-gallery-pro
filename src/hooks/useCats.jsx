@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function useCats() {
-  const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-
-  const limit = 9;
 
   const fetchCats = async (pageNumber) => {
     setLoading(true);

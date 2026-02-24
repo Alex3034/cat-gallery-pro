@@ -1,13 +1,10 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
+import useCats from "../hooks/useCats";
 
 export default function Home() {
-  const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { cats, loading, error, handleLoadMore } = useCats();
   const [favorites, setFavorites] = useState([]);
-  const [page, setPage] = useState(1);
-  const limit = 9;
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favorites");
@@ -27,34 +24,6 @@ export default function Home() {
 
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
-
-  const fetchCats = async (pageNumber) => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(
-        `https://api.thecatapi.com/v1/images/search?limit=${limit}&page=${pageNumber}`
-      );
-
-      const data = await response.json();
-      setCats((prevCats) => [...prevCats, ...data]);
-    } catch (err) {
-      setError("No se pudieron cargar los gatos.");
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  useEffect(() => {
-    fetchCats(page);
-  }, []);
-
-  const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchCats(nextPage);
   };
 
   const isFavorite = (cat) => favorites.some((fav) => fav.id === cat.id);
