@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import useCats from "../hooks/useCats";
+import CatGallery from "../components/CatGallery";
 
 export default function Home() {
   const { cats, loading, error, handleLoadMore } = useCats();
@@ -42,31 +43,19 @@ export default function Home() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
 
-        {cats.map((cat) => (
-          <div key={cat.id} className="relative bg-white rounded-lg shadow-md overflow-hidden">
-            <img
-              src={cat.url}
-              alt="Cat"
-              className="w-full h-60 object-cover"
-            />
-
-            <button
-              onClick={() => toggleFavorite(cat)}
-              className="absolute top-2 right-2 bg-white rounded-full p-2 shadow"
-            >
-              {isFavorite(cat) ? "💖" : "🤍"}
-            </button>
-
-          </div>
-        ))}
+        <CatGallery
+          cats={cats}
+          toggleFavorite={toggleFavorite}
+          isFavorite={isFavorite}
+        />
       </div>
 
-        <button
-          onClick={handleLoadMore}
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        >
-          Ver más
-        </button>
+      <button
+        onClick={handleLoadMore}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        Ver más
+      </button>
     </div>
   );
 }
