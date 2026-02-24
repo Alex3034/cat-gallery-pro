@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import useCats from "../hooks/useCats";
 import CatGallery from "../components/CatGallery";
+import LoadMoreButton from "../components/LoadMoreButton";
 
 export default function Home() {
   const { cats, loading, error, handleLoadMore } = useCats();
@@ -41,21 +42,14 @@ export default function Home() {
         <p className="p-4 text-center text-red-500">{error}</p>
       )}
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
-
-        <CatGallery
-          cats={cats}
-          toggleFavorite={toggleFavorite}
-          isFavorite={isFavorite}
-        />
-      </div>
-
-      <button
-        onClick={handleLoadMore}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        Ver más
-      </button>
+      <CatGallery
+        cats={cats}
+        toggleFavorite={toggleFavorite}
+        isFavorite={isFavorite}
+      />
+      
+      <LoadMoreButton onClick={handleLoadMore} loading={loading} />
+      
     </div>
   );
 }
