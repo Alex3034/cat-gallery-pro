@@ -18,9 +18,7 @@ export default function Home() {
         <p className="p-4 text-center text-red-500">{error}</p>
       )}
 
-      <CatGallery
-        cats={cats}
-      />
+      <CatGallery cats={cats} />
       
       <LoadMoreButton onClick={handleLoadMore} loading={loading} />
       

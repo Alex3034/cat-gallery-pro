@@ -15,7 +15,7 @@ export default function CatCard({ cat }) {
                 onClick={() => toggleFavorite(cat)}
                 className="absolute top-2 right-2 bg-white rounded-full p-2 shadow"
             >
-                {isFavorite(cat) ? "💖" : "🤍"}
+                {isFavorite(cat.id) ? "💖" : "🤍"}
             </button>
         </div>
     );

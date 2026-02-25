@@ -1,10 +1,23 @@
 import Navbar from "../components/Navbar";
+import { useFavorites } from "../context/FavoritesContext";
+import CatGallery from "../components/CatGallery";
 
 export default function Favorites() {
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
-      <h1 className="text-2xl font-bold text-center">Favorites Page</h1>
+
+      {favorites.length === 0 ? (
+        <p className="p-4 text-center text-lg">
+          No tienes gatos favoritos aún. 💔
+        </p>
+      ) : (
+
+        <CatGallery cats={favorites} />
+        
+      )}
     </div>
   );
 }
