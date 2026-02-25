@@ -1,4 +1,8 @@
-export default function CatCard({ cat, toggleFavorite, isFavorite }) {
+import { useFavorites } from "../context/FavoritesContext";
+
+export default function CatCard({ cat }) {
+    const { toggleFavorite, isFavorite } = useFavorites();
+
     return (
         <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
             <img
