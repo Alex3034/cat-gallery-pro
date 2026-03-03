@@ -29,6 +29,21 @@ export default function useCats(limit = 9) {
         fetchCats(page);
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.body.scrollHeight;
+
+            if (scrollTop + windowHeight >= fullHeight - 300 && !loading) {
+                handleLoadMore();
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [loading, page]);
+
     const handleLoadMore = () => {
         const nextPage = page + 1;
         setPage(nextPage);

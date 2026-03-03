@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
 import useCats from "../hooks/useCats";
 import CatGallery from "../components/CatGallery";
-import LoadMoreButton from "../components/LoadMoreButton";
 import Loader from "../components/Loader";
 
 export default function Home() {
@@ -18,9 +17,7 @@ export default function Home() {
       )}
 
       <CatGallery cats={cats} />
-      
-      <LoadMoreButton onClick={handleLoadMore} loading={loading} />
-      
+            
     </div>
   );
 }
