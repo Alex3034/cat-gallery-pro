@@ -10,14 +10,13 @@ export default function Home() {
     <div className="min-h-screen bg-gray-100">
       <Navbar />
 
-      {loading && <Loader />}
-
       {error && (
         <p className="p-4 text-center text-red-500">{error}</p>
       )}
 
       <CatGallery cats={cats} loaderRef={loaderRef} />
             
+      {loading && <Loader />}
     </div>
   );
 }
