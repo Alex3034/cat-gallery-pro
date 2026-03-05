@@ -15,12 +15,14 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 px-6 py-4 flex justify-between items-center 
+      role="navigation"
+      aria-label="Main Navigation"
+      className={`sticky top-0 z-50 px-6 flex justify-between items-center 
       transition-all duration-300
       ${
         scrolled
-          ? "backdrop-blur-lg bg-white/80 shadow-md border-b border-white/40"
-          : "backdrop-blur-md bg-white/60 shadow-sm border-b border-white/30"
+          ? "py-3 backdrop-blur-lg bg-white/80 shadow-md border-b border-white/40"
+          : "py-4 backdrop-blur-md bg-white/60 shadow-sm border-b border-white/30"
       }`}
     >
       <h1
@@ -45,7 +47,11 @@ export default function Navbar() {
             }`
           }
         >
-          Home
+          {({ isActive }) => (
+            <span aria-current={isActive ? "page" : undefined}>
+              Home
+            </span>
+          )}
         </NavLink>
 
         <NavLink
@@ -58,7 +64,11 @@ export default function Navbar() {
             }`
           }
         >
-          Favorites
+          {({ isActive }) => (
+            <span aria-current={isActive ? "page" : undefined}>
+              Favorites
+            </span>
+          )}
         </NavLink>
       </div>
     </nav>
