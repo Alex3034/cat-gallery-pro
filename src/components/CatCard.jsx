@@ -7,6 +7,7 @@ function CatCard({ cat }) {
     const { toggleFavorite, isFavorite } = useFavorites();
     const [loaded, setLoaded] = useState(false);
     const [animate, setAnimate] = useState(false);
+    const favorite = isFavorite(cat.id);
 
     return (
         <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
@@ -26,18 +27,29 @@ function CatCard({ cat }) {
 
             <button
                 onClick={() => {
-                    toggleFavorite(cat); setAnimate(true);
+                    toggleFavorite(cat);
+                    setAnimate(true);
 
                     setTimeout(() => {
                         setAnimate(false);
-                    }, 300);
+                    }, 500);
                 }}
-                aria-label={isFavorite(cat.id) ? "Remove from favorites" : "Add to favorites"}
-                className={`absolute top-2 right-2 bg-white rounded-full p-2 shadow 
-                    transition-all duration-200 hover:scale-110 active:scale-90
-                    ${animate ? "animate-pulse" : ""}`}
-            >
-                <HeartIcon filled={isFavorite(cat.id)} />
+                aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+                className="absolute top-2 right-2 bg-white rounded-full p-2 shadow 
+                    transition-all duration-200 hover:scale-110 active:scale-90">
+
+                <div className="relative flex items-center justify-center">
+                    <HeartIcon filled={favorite} />
+
+                    {animate && (
+                        <>
+                            <span className="particle particle1"></span>
+                            <span className="particle particle2"></span>
+                            <span className="particle particle3"></span>
+                            <span className="particle particle4"></span>
+                        </>
+                    )}
+                </div>
             </button>
         </div>
     );
