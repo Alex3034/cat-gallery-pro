@@ -1,31 +1,28 @@
 import { useState } from "react";
+import React from "react";
 import { useFavorites } from "../context/FavoritesContext";
 import HeartIcon from "./icons/HeartIcon";
 
-export default function CatCard({ cat }) {
+function CatCard({ cat }) {
   const { toggleFavorite, isFavorite } = useFavorites();
   const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
 
-      <div className="relative aspect-square">
+      {!loaded && (
+        <div className="absolute inset-0 h-60 bg-gray-200 animate-pulse"></div>
+      )}
 
-        {!loaded && (
-          <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
-        )}
-
-        <img
-          src={cat.url}
-          alt="Cat"
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-        />
-
-      </div>
+      <img
+        src={cat.url}
+        alt="Cat"
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        className={`w-full h-60 object-cover transition-opacity duration-500 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
 
       <button
         onClick={() => toggleFavorite(cat)}
@@ -34,7 +31,8 @@ export default function CatCard({ cat }) {
       >
         <HeartIcon filled={isFavorite(cat.id)} />
       </button>
-
     </div>
   );
 }
+
+export default React.memo(CatCard);
