@@ -9,19 +9,23 @@ export default function CatCard({ cat }) {
   return (
     <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
 
-      {!loaded && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
-      )}
+      <div className="relative aspect-square">
 
-      <img
-        src={cat.url}
-        alt="Cat"
-        loading="lazy"
-        onLoad={() => setLoaded(true)}
-        className={`w-full h-60 object-cover transition-opacity duration-500 ${
-          loaded ? "opacity-100" : "opacity-0"
-        }`}
-      />
+        {!loaded && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+        )}
+
+        <img
+          src={cat.url}
+          alt="Cat"
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+      </div>
 
       <button
         onClick={() => toggleFavorite(cat)}
