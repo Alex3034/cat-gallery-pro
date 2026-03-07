@@ -8,6 +8,11 @@ export default function CatCard({ cat }) {
 
   return (
     <div className="relative bg-white rounded-lg shadow-md overflow-hidden hover:scale-105 transition">
+
+      {!loaded && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+      )}
+
       <img
         src={cat.url}
         alt="Cat"
@@ -25,6 +30,7 @@ export default function CatCard({ cat }) {
       >
         <HeartIcon filled={isFavorite(cat.id)} />
       </button>
+
     </div>
   );
 }
