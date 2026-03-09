@@ -19,20 +19,17 @@ export default function Navbar() {
       aria-label="Main Navigation"
       className={`sticky top-0 z-50 px-6 flex justify-between items-center 
       transition-all duration-300
-      ${
-        scrolled
+      ${scrolled
           ? "py-3 backdrop-blur-lg bg-white/80 shadow-md border-b border-white/40"
           : "py-4 backdrop-blur-md bg-white/60 shadow-sm border-b border-white/30"
-      }`}
+        }`}
     >
       <h1
-        className={`font-bold text-gray-800 transition-all duration-300 
-        ${
-          scrolled
-            ? "text-lg tracking-tight"
-            : "text-xl tracking-normal"
-        }`}
+        className={`flex items-center gap-2 font-bold text-gray-800 transition-all duration-300 ${scrolled ? "text-lg tracking-tight" : "text-xl tracking-normal"
+          }`}
       >
+        <img src="src/assets/cat-gallery-pro-icon.svg" alt="Icono de la app" className="w-6 h-6" />
+
         Cat Gallery Pro
       </h1>
 
@@ -40,10 +37,9 @@ export default function Navbar() {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `font-semibold transition-all duration-200 ${
-              isActive
-                ? "text-blue-600"
-                : "text-gray-700 hover:text-blue-600 hover:opacity-80"
+            `font-semibold transition-all duration-200 ${isActive
+              ? "text-blue-600"
+              : "text-gray-700 hover:text-blue-600 hover:opacity-80"
             }`
           }
         >
@@ -57,10 +53,9 @@ export default function Navbar() {
         <NavLink
           to="/favorites"
           className={({ isActive }) =>
-            `font-semibold transition-all duration-200 ${
-              isActive
-                ? "text-blue-600"
-                : "text-gray-700 hover:text-blue-600 hover:opacity-80"
+            `font-semibold transition-all duration-200 ${isActive
+              ? "text-blue-600"
+              : "text-gray-700 hover:text-blue-600 hover:opacity-80"
             }`
           }
         >
