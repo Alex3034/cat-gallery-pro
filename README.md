@@ -23,7 +23,7 @@ Este proyecto está enfocado en **arquitectura de componentes, rendimiento y exp
 
 | Vista de escritorio | Vista móvil |
 |---------------------|-------------|
-| ![Desktop](./assets/home-desktop.png) | ![Mobile](./assets/mobile.png) |
+| ![Desktop](./img/home-desktop.png) | ![Mobile](./img/mobile.png) |
 
 ---
 
