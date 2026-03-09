@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import CatIcon from "../assets/cat-gallery-pro-icon.svg";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +29,7 @@ export default function Navbar() {
         className={`flex items-center gap-2 font-bold text-gray-800 transition-all duration-300 ${scrolled ? "text-lg tracking-tight" : "text-xl tracking-normal"
           }`}
       >
-        <img src="../assets/cat-gallery-pro-icon.svg" alt="Icono de la app" className="w-6 h-6" />
+        <img src={CatIcon} alt="Icono de la app" className="w-6 h-6" />
 
         Cat Gallery Pro
       </h1>
