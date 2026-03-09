@@ -28,7 +28,7 @@ export default function Navbar() {
         className={`flex items-center gap-2 font-bold text-gray-800 transition-all duration-300 ${scrolled ? "text-lg tracking-tight" : "text-xl tracking-normal"
           }`}
       >
-        <img src="./src/assets/cat-gallery-pro-icon.svg" alt="Icono de la app" className="w-6 h-6" />
+        <img src="../assets/cat-gallery-pro-icon.svg" alt="Icono de la app" className="w-6 h-6" />
 
         Cat Gallery Pro
       </h1>
